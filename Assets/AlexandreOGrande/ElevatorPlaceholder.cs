@@ -14,6 +14,7 @@ public class ElevatorPlaceholder : MonoBehaviour
 
     public Elevatortype thisElevatorType;
 
+    SphereCollider thisCollider;
     RoomsManager manager;
     Animator elevatorAnim;
 
@@ -21,26 +22,52 @@ public class ElevatorPlaceholder : MonoBehaviour
     {
         elevatorAnim = GetComponent<Animator>();
         manager = FindObjectOfType<RoomsManager>();
+        thisCollider = GetComponent<SphereCollider>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            other.transform.parent = this.transform;
-            elevatorAnim.SetTrigger("CloseDoor");
-            Debug.LogWarning("Entered in collider");
-            StartCoroutine(ReplacePlayerPosition());
+            Debug.LogWarning("Player entered the elevator");
 
+            StartCoroutine(ReplacePlayerPosition(other));
         }
     }
 
-    public IEnumerator ReplacePlayerPosition()
+    private IEnumerator ReplacePlayerPosition(Collider player)
     {
+        elevatorAnim.SetTrigger("CloseDoor");
         yield return new WaitForSeconds(2f);
-        transform.position = new Vector3(4.336629f, .63f, -2.818707f);
+
+        CharacterController controller = player.GetComponent<CharacterController>();
+        if (controller != null)
+        {
+            controller.enabled = false;
+        }
+
+        this.transform.parent = null;
+        manager.checkCurrentDecision(thisElevatorType);
+        transform.position = manager.initialElevatorPosition;
+        player.transform.position = transform.position;
+
+        manager.currentElevator = this.gameObject;
+
+        Vector3 newPlayerPosition = transform.position;
+        newPlayerPosition.y -= 0.2f;
+
+        player.transform.position = newPlayerPosition;
+
         yield return new WaitForSeconds(3f);
         elevatorAnim.SetTrigger("OpenDoor");
 
+        if (controller != null)
+        {
+            controller.enabled = true;
+            thisCollider.enabled = false;
+        }
+        controller.enabled = true;
+
+        Debug.Log("Elevator and player teleported successfully!");
     }
 }
