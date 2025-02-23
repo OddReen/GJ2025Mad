@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 8900000, guid: 619e305f5165a9946b7f72464e44ca4a, type: 3}
   m_Sun: {fileID: 2114283754330233425}
-  m_IndirectSpecularColor: {r: 0.029152213, g: 0.064445764, b: 0.12695098, a: 1}
+  m_IndirectSpecularColor: {r: 0.029152056, g: 0.06444542, b: 0.12695055, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2768,6 +2768,20 @@ MonoBehaviour:
   initialRoomLocation: {x: 0, y: 0, z: 0}
   arrowUP: {fileID: 2100000, guid: 51d24995700bce640984bb9ad564766e, type: 2}
   arrowDOWN: {fileID: 2100000, guid: e64445d99e89aac48a730d2f0e6acbd6, type: 2}
+  elevatorUP:
+    Guid:
+      Data1: -229073844
+      Data2: 1226953327
+      Data3: -919351880
+      Data4: -1591086725
+    Path: event:/ElevatorUp
+  elevatorDown:
+    Guid:
+      Data1: 1467585375
+      Data2: 1111025157
+      Data3: 950991524
+      Data4: -1521128974
+    Path: event:/ElevatorDown
 --- !u!4 &2014049669
 Transform:
   m_ObjectHideFlags: 0
