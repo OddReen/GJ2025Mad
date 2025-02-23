@@ -55,6 +55,8 @@ public class ElevatorPlaceholder : MonoBehaviour
         transform.position = manager.initialElevatorPosition;
         player.transform.position = transform.position;
 
+        Destroy(manager.currentElevator);
+
         manager.currentElevator = this.gameObject;
 
         //Vector3 newPlayerPosition = transform.position;

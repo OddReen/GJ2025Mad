@@ -31,12 +31,14 @@ public class RoomsManager : MonoBehaviour
         if (elevatorEntered == currentLevelType)
         {
             currentScore++;
+            elevatorReference.arrow.GetComponent<MeshRenderer>().material = null;
             elevatorReference.arrow.GetComponent<MeshRenderer>().material = arrowUP;
             elevatorReference.arrow.SetActive(true);
         }
         else
         {
             currentScore = 0;
+            elevatorReference.arrow.GetComponent<MeshRenderer>().material = null;
             elevatorReference.arrow.GetComponent<MeshRenderer>().material = arrowDOWN;
             elevatorReference.arrow.SetActive(true);
         }
