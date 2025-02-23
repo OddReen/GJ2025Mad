@@ -30,7 +30,7 @@ public class CameraRotation : MonoBehaviour
 
         Pitch = Mathf.Clamp(Pitch, -90f, 90f);
 
-        transform.rotation = Quaternion.Euler(0, Yaw, 0);
+        transform.localRotation = Quaternion.Euler(0, Yaw, 0);
 
         orientation.localRotation = Quaternion.Euler(Pitch, 0, 0);
     }

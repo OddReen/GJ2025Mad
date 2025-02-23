@@ -6,6 +6,7 @@ public class InitialElevator : MonoBehaviour
 {
     Animator anim;
     public GameObject uiToDESTROY;
+    public GameObject DirUI;
 
     private void Start()
     {
@@ -19,6 +20,8 @@ public class InitialElevator : MonoBehaviour
             anim.SetTrigger("OpenDoor");
             Destroy(uiToDESTROY);
             FindObjectOfType<PlayerBehaviour>().StartGame();
+            FindObjectOfType<CameraRotation>().enabled = true;
+            DirUI.SetActive(true);
             Destroy(this);
         }
     }

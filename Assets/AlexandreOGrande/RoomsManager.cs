@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class RoomsManager : MonoBehaviour
 {
+    public TextMeshProUGUI floorNumberText;
+
     public GameObject neutralRoomPrefab;
     public GameObject[] GoodRoomPrefab;
     public GameObject[] BadRoomPrefab;
@@ -31,6 +34,7 @@ public class RoomsManager : MonoBehaviour
         if (elevatorEntered == currentLevelType)
         {
             currentScore++;
+            floorNumberText.text = "Floor: " + currentScore.ToString();
             elevatorReference.arrow.GetComponent<MeshRenderer>().material = null;
             elevatorReference.arrow.GetComponent<MeshRenderer>().material = arrowUP;
             elevatorReference.arrow.SetActive(true);
@@ -38,6 +42,7 @@ public class RoomsManager : MonoBehaviour
         else
         {
             currentScore = 0;
+            floorNumberText.text = "Floor: " + currentScore.ToString();
             elevatorReference.arrow.GetComponent<MeshRenderer>().material = null;
             elevatorReference.arrow.GetComponent<MeshRenderer>().material = arrowDOWN;
             elevatorReference.arrow.SetActive(true);

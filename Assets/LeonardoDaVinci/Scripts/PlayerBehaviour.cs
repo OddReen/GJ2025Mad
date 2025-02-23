@@ -13,6 +13,13 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] Transform maravilha;
     [SerializeField] Transform grotesco;
 
+    [SerializeField] Animator neutroAnim;
+    [SerializeField] Animator maravilhaAnim;
+    [SerializeField] Animator grotescoAnim;
+
+    [SerializeField] GameObject DirUI;
+    [SerializeField] GameObject FloorNum;
+
     Animator cameraAnim;
 
     bool started;
@@ -34,10 +41,14 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (!started)
         {
-            started = true;
-            gameState = GameState.WalkingUpToElevators;
+            Invoke(nameof(StartGameDelay), 1);
         }
-
+    }
+    void StartGameDelay()
+    {
+        started = true;
+        FloorNum.SetActive(true);
+        gameState = GameState.WalkingUpToElevators;
     }
 
     private void Start()
@@ -50,6 +61,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             if (gameState == GameState.WalkingUpToElevators)
             {
+                DirUI.SetActive(true);
                 UpdateCameraAnimator(true);
                 if (HasReachedDestination(endOfCorridor.position))
                 {
@@ -63,6 +75,7 @@ public class PlayerBehaviour : MonoBehaviour
             }
             else if (gameState == GameState.GettingInElevator)
             {
+
                 if (elevador == Elevador.Neutro)
                 {
                     MoveTowards(neutro.position);
@@ -93,6 +106,7 @@ public class PlayerBehaviour : MonoBehaviour
             }
             else if (gameState == GameState.StayingInElevator)
             {
+                DirUI.SetActive(false);
                 // If right, go up a level
                 // If wrong, restart
             }
@@ -106,14 +120,23 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (elevador != Elevador.Maravilha && Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
+            neutroAnim.SetBool("Selected", false);
+            grotescoAnim.SetBool("Selected", false);
+            maravilhaAnim.SetBool("Selected", true);
             elevador = Elevador.Maravilha;
         }
         else if (elevador != Elevador.Neutro && Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
+            maravilhaAnim.SetBool("Selected", false);
+            grotescoAnim.SetBool("Selected", false);
+            neutroAnim.SetBool("Selected", true);
             elevador = Elevador.Neutro;
         }
         else if (elevador != Elevador.Grotesco && Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
+            neutroAnim.SetBool("Selected", false);
+            maravilhaAnim.SetBool("Selected", false);
+            grotescoAnim.SetBool("Selected", true);
             elevador = Elevador.Grotesco;
         }
     }
@@ -133,4 +156,6 @@ public class PlayerBehaviour : MonoBehaviour
     {
         cameraAnim.SetBool("isWalking", isWalking);
     }
+
+
 }
