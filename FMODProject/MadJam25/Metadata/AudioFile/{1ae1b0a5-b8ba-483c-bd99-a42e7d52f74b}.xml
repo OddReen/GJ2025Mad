@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{1ae1b0a5-b8ba-483c-bd99-a42e7d52f74b}">
+		<property name="assetPath">
+			<value>jamjam_mainmenu.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.750204081632653</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{30dfe3ac-2c0c-4919-aa4d-891f7e413b76}</destination>
+		</relationship>
+	</object>
+</objects>

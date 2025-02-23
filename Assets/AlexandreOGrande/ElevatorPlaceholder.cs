@@ -31,6 +31,9 @@ public class ElevatorPlaceholder : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+
+            FMODMusicsController.instance.PauseMusic();
+            FMODMusicsController.instance.PlayElevatorMusic();
             Debug.LogWarning("Player entered the elevator");
             StartCoroutine(ReplacePlayerPosition(other));
         }
@@ -75,5 +78,7 @@ public class ElevatorPlaceholder : MonoBehaviour
         playerScriptRef.gameState = PlayerBehaviour.GameState.WalkingUpToElevators;
         playerScriptRef.elevador = PlayerBehaviour.Elevador.Neutro;
         playerScriptRef.blockMovement = true;
+
+        FMODMusicsController.instance.ResumeMusic();
     }
 }

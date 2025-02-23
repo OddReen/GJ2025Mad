@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{fddde463-189a-4d81-a3f7-2051662529f8}">
+		<property name="assetPath">
+			<value>pour-beer-13-202173.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>19.68</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{30dfe3ac-2c0c-4919-aa4d-891f7e413b76}</destination>
+		</relationship>
+	</object>
+</objects>

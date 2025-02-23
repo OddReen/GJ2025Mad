@@ -1249,6 +1249,70 @@ Transform:
   m_Father: {fileID: 2114283753834967213}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1114776579
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1114776581}
+  - component: {fileID: 1114776580}
+  m_Layer: 0
+  m_Name: FMODController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1114776580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114776579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947c7a948217cdc4ebc0c63fd6338cd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music1:
+    Guid:
+      Data1: -93513332
+      Data2: 1102139157
+      Data3: 1099733420
+      Data4: -656687635
+    Path: event:/initialMusic
+  music2:
+    Guid:
+      Data1: -864943746
+      Data2: 1276314835
+      Data3: 735175602
+      Data4: -1472342466
+    Path: event:/NormalMusic
+  elevatorSound:
+    Guid:
+      Data1: 1211419748
+      Data2: 1265238774
+      Data3: 332386198
+      Data4: -815516249
+    Path: event:/ElevatorMusic
+--- !u!4 &1114776581
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114776579}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.654504, y: 8.37053, z: 29.871487}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1168077083
 GameObject:
   m_ObjectHideFlags: 0
