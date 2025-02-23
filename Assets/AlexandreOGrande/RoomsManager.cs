@@ -17,20 +17,28 @@ public class RoomsManager : MonoBehaviour
     public Vector3 initialElevatorPosition;
     public Vector3 initialRoomLocation;
 
+    public Material arrowUP;
+    public Material arrowDOWN;
+
+
     private void Start()
     {
         initialElevatorPosition = currentElevator.transform.position;
         initialRoomLocation = currentRoom.transform.position;
     }
-    public void checkCurrentDecision(Elevatortype elevatorEntered)
+    public void checkCurrentDecision(Elevatortype elevatorEntered, ElevatorPlaceholder elevatorReference)
     {
         if (elevatorEntered == currentLevelType)
         {
             currentScore++;
+            elevatorReference.arrow.GetComponent<MeshRenderer>().material = arrowUP;
+            elevatorReference.arrow.SetActive(true);
         }
         else
         {
             currentScore = 0;
+            elevatorReference.arrow.GetComponent<MeshRenderer>().material = arrowDOWN;
+            elevatorReference.arrow.SetActive(true);
         }
 
         GenerateRandomRoom();

@@ -4,8 +4,8 @@ public class PlayerBehaviour : MonoBehaviour
 {
     [SerializeField] float speed;
 
-    Elevador elevador = Elevador.Neutro;
-    GameState gameState = GameState.WalkingUpToElevators;
+    public Elevador elevador = Elevador.Neutro;
+    public GameState gameState = GameState.StayingInElevator;
 
     [SerializeField] Transform endOfCorridor;
 
@@ -13,67 +13,94 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] Transform maravilha;
     [SerializeField] Transform grotesco;
 
-    enum GameState
+    Animator cameraAnim;
+
+    bool started;
+    public bool blockMovement = true;
+    public enum GameState
     {
         WalkingUpToElevators,
         GettingInElevator,
         StayingInElevator
     }
-    enum Elevador
+    public enum Elevador
     {
         Neutro,
         Maravilha,
         Grotesco
     }
 
+    public void StartGame()
+    {
+        if (!started)
+        {
+            started = true;
+            gameState = GameState.WalkingUpToElevators;
+        }
+
+    }
+
+    private void Start()
+    {
+        cameraAnim = GetComponentInChildren<Animator>();
+    }
     private void Update()
     {
-        if (gameState == GameState.WalkingUpToElevators)
+        if (started)
         {
-            if (HasReachedDestination(endOfCorridor.position))
+            if (gameState == GameState.WalkingUpToElevators)
             {
-                gameState = GameState.GettingInElevator;
-            }
-            MoveTowards(endOfCorridor.position);
-            MoveSideWays();
-        }
-        else if (gameState == GameState.GettingInElevator)
-        {
-            if (elevador == Elevador.Neutro)
-            {
-                MoveTowards(neutro.position);
-                if (HasReachedDestination(neutro.position))
+                UpdateCameraAnimator(true);
+                if (HasReachedDestination(endOfCorridor.position))
                 {
-                    gameState = GameState.StayingInElevator;
+                    gameState = GameState.GettingInElevator;
+                }
+                MoveTowards(endOfCorridor.position);
+                if (blockMovement)
+                {
+                    MoveSideWays();
                 }
             }
-            if (elevador == Elevador.Maravilha)
+            else if (gameState == GameState.GettingInElevator)
             {
-                MoveTowards(maravilha.position);
-                if (HasReachedDestination(maravilha.position))
+                if (elevador == Elevador.Neutro)
                 {
-                    gameState = GameState.StayingInElevator;
+                    MoveTowards(neutro.position);
+                    if (HasReachedDestination(neutro.position))
+                    {
+                        gameState = GameState.StayingInElevator;
+                        UpdateCameraAnimator(false);
+                    }
+                }
+                if (elevador == Elevador.Maravilha)
+                {
+                    MoveTowards(maravilha.position);
+                    if (HasReachedDestination(maravilha.position))
+                    {
+                        gameState = GameState.StayingInElevator;
+                        UpdateCameraAnimator(false);
+                    }
+                }
+                if (elevador == Elevador.Grotesco)
+                {
+                    MoveTowards(grotesco.position);
+                    if (HasReachedDestination(grotesco.position))
+                    {
+                        gameState = GameState.StayingInElevator;
+                        UpdateCameraAnimator(false);
+                    }
                 }
             }
-            if (elevador == Elevador.Grotesco)
+            else if (gameState == GameState.StayingInElevator)
             {
-                MoveTowards(grotesco.position);
-                if (HasReachedDestination(grotesco.position))
-                {
-                    gameState = GameState.StayingInElevator;
-                }
+                // If right, go up a level
+                // If wrong, restart
             }
-        }
-        else if (gameState == GameState.StayingInElevator)
-        {
-            // If right, go up a level
-            // If wrong, restart
         }
     }
     void MoveTowards(Vector3 destination)
     {
         transform.position = Vector3.MoveTowards(transform.position, destination, Time.deltaTime * speed);
-
     }
     void MoveSideWays()
     {
@@ -100,5 +127,10 @@ public class PlayerBehaviour : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void UpdateCameraAnimator(bool isWalking)
+    {
+        cameraAnim.SetBool("isWalking", isWalking);
     }
 }
