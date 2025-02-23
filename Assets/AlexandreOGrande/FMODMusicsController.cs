@@ -11,6 +11,7 @@ public class FMODMusicsController : MonoBehaviour
 
     private FMOD.Studio.EventInstance musicInstance;
     private bool isPaused = false;
+    private bool isElevatorPaused = true;
     private bool hasSwitchedMusic = false;
 
     public FMODUnity.EventReference elevatorSound;
@@ -61,17 +62,25 @@ public class FMODMusicsController : MonoBehaviour
         }
     }
 
-    public void PlayElevatorMusic()
+    public void ToggleElevatorMusic()
     {
-        //if (elevatorInstance.isValid())
-        //{
-        //    elevatorInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        //    elevatorInstance.release();
-        //}
-
-        //elevatorInstance = FMODUnity.RuntimeManager.CreateInstance(elevatorSound);
-        //elevatorInstance.start();
-
-        FMODUnity.RuntimeManager.PlayOneShot(elevatorSound);
+        if (elevatorInstance.isValid())
+        {
+            if (isElevatorPaused)
+            {
+                elevatorInstance.setPaused(false);
+            }
+            else
+            {
+                elevatorInstance.setPaused(true);
+            }
+            isElevatorPaused = !isElevatorPaused;
+        }
+        else
+        {
+            elevatorInstance = FMODUnity.RuntimeManager.CreateInstance(elevatorSound);
+            elevatorInstance.start();
+            isElevatorPaused = false;
+        }
     }
 }

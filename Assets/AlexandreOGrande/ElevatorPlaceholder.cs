@@ -33,7 +33,8 @@ public class ElevatorPlaceholder : MonoBehaviour
         {
 
             FMODMusicsController.instance.PauseMusic();
-            FMODMusicsController.instance.PlayElevatorMusic();
+            FMODMusicsController.instance.ToggleElevatorMusic();
+
             Debug.LogWarning("Player entered the elevator");
             StartCoroutine(ReplacePlayerPosition(other));
         }
@@ -82,5 +83,7 @@ public class ElevatorPlaceholder : MonoBehaviour
         playerScriptRef.blockMovement = true;
 
         FMODMusicsController.instance.ResumeMusic();
+        FMODMusicsController.instance.ToggleElevatorMusic();
+
     }
 }

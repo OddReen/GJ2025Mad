@@ -49,11 +49,11 @@ MonoBehaviour:
   - {fileID: 4082747898569380898}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 5500
+  Length: 189910
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,7 +79,7 @@ MonoBehaviour:
   - {fileID: 4082747898569380898}
   StringsBanks:
   - {fileID: 5159083168484913498}
-  cacheTime: 638758707756801421
+  cacheTime: 638759007091855231
   cacheVersion: 131622
 --- !u!114 &539466926690560575
 MonoBehaviour:
@@ -107,7 +107,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 236617
+  Length: 293142
 --- !u!114 &4082747898569380898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,10 +123,10 @@ MonoBehaviour:
   Path: FMODProject/MadJam25/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638758707756801421
+  lastModified: 638759007091845230
   FileSizes:
   - Name: Desktop
-    Value: 3446656
+    Value: 6963712
   Exists: 1
 --- !u!114 &5159083168484913498
 MonoBehaviour:
@@ -143,7 +143,7 @@ MonoBehaviour:
   Path: FMODProject/MadJam25/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638758590817574529
+  lastModified: 638759007091855231
   FileSizes:
   - Name: Desktop
     Value: 900
