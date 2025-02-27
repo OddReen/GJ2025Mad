@@ -21,7 +21,6 @@ public class InitialElevator : MonoBehaviour
             Destroy(uiToDESTROY);
             FindObjectOfType<PlayerBehaviour>().StartGame();
             FindObjectOfType<CameraRotation>().enabled = true;
-            DirUI.SetActive(true);
             Destroy(this);
         }
     }

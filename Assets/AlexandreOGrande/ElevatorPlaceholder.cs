@@ -50,7 +50,6 @@ public class ElevatorPlaceholder : MonoBehaviour
         {
             controller.enabled = false;
         }
-
         this.transform.parent = null;
         manager.checkCurrentDecision(thisElevatorType, this);
         transform.position = manager.initialElevatorPosition;
