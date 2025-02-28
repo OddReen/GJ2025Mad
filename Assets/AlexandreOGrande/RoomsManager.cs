@@ -51,8 +51,7 @@ public class RoomsManager : MonoBehaviour
             elevatorReference.arrow.GetComponent<MeshRenderer>().material = null;
             elevatorReference.arrow.GetComponent<MeshRenderer>().material = arrowDOWN;
             elevatorReference.arrow.SetActive(true);
-            FMODUnity.RuntimeManager.PlayOneShot(elevatorUP);
-
+            FMODUnity.RuntimeManager.PlayOneShot(elevatorDown);
         }
 
         GenerateRandomRoom();

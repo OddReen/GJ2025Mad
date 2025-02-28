@@ -18,7 +18,8 @@ public class InitialElevator : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             anim.SetTrigger("OpenDoor");
-            Destroy(uiToDESTROY);
+            uiToDESTROY.SetActive(false);
+            DirUI.SetActive(true);
             FindObjectOfType<PlayerBehaviour>().StartGame();
             FindObjectOfType<CameraRotation>().enabled = true;
             Destroy(this);

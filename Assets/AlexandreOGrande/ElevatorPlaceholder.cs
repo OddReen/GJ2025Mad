@@ -65,7 +65,7 @@ public class ElevatorPlaceholder : MonoBehaviour
         //Vector3 newPlayerPosition = transform.position;
         //newPlayerPosition.y -= 0.2f;
 
-        player.transform.position = new Vector3(18.86755f, 1f, 13.23491f);
+        player.transform.position = new Vector3(25.8f, 1f, 15.09f);
 
         yield return new WaitForSeconds(3f);
         elevatorAnim.SetTrigger("OpenDoor");
