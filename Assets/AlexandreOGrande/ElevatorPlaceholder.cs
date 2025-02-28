@@ -19,6 +19,9 @@ public class ElevatorPlaceholder : MonoBehaviour
     Animator elevatorAnim;
     public GameObject arrow;
 
+    public FMODUnity.EventReference elevatorUP;
+    public FMODUnity.EventReference elevatorDown;
+
 
     private void Start()
     {

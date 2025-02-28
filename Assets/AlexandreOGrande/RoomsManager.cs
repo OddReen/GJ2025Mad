@@ -24,6 +24,10 @@ public class RoomsManager : MonoBehaviour
     public Material arrowDOWN;
 
 
+    public FMODUnity.EventReference elevatorUP;
+    public FMODUnity.EventReference elevatorDown;
+
+
     private void Start()
     {
         initialElevatorPosition = currentElevator.transform.position;
@@ -38,6 +42,7 @@ public class RoomsManager : MonoBehaviour
             elevatorReference.arrow.GetComponent<MeshRenderer>().material = null;
             elevatorReference.arrow.GetComponent<MeshRenderer>().material = arrowUP;
             elevatorReference.arrow.SetActive(true);
+            FMODUnity.RuntimeManager.PlayOneShot(elevatorUP);
         }
         else
         {
@@ -46,6 +51,8 @@ public class RoomsManager : MonoBehaviour
             elevatorReference.arrow.GetComponent<MeshRenderer>().material = null;
             elevatorReference.arrow.GetComponent<MeshRenderer>().material = arrowDOWN;
             elevatorReference.arrow.SetActive(true);
+            FMODUnity.RuntimeManager.PlayOneShot(elevatorUP);
+
         }
 
         GenerateRandomRoom();
